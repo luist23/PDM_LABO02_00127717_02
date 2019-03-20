@@ -12,22 +12,26 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
-    private String[] images = {"img1","img2","img3"};
-    private ImageView[] grids = {findViewById(R.id.grid1),findViewById(R.id.grid2),findViewById(R.id.grid3),findViewById(R.id.grid4),
-            findViewById(R.id.grid5),findViewById(R.id.grid6),findViewById(R.id.grid7),findViewById(R.id.grid8),findViewById(R.id.grid9)};
-
+    //private ArrayList<String> images = new ArrayList<>();
+    //private ArrayList<Integer> images = new ArrayList<>();
+    private Integer[] images;
+    private ImageView[] grids;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        images=new Integer[]{R.drawable.img1, R.drawable.img2, R.drawable.img3};
+        grids = new ImageView[]{findViewById(R.id.grid1),findViewById(R.id.grid2),findViewById(R.id.grid3),findViewById(R.id.grid4),
+                findViewById(R.id.grid5),findViewById(R.id.grid6),findViewById(R.id.grid7),findViewById(R.id.grid8),findViewById(R.id.grid9)};
+        //images.add("img1");images.add("img2");images.add("img3");
+
         for (ImageView grid : grids) {
-            grid.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Random r = new Random();
-                    int i1 = r.nextInt(2 - 0 + 1) + 0;
-                    grid.
-                }
+            int inicial = (int)(Math.random()*2);
+            grid.setImageResource(images[inicial]);
+            grid.setOnClickListener( v->{
+                int aleatorio = (int)(Math.random()*2);
+                grid.setImageResource(images[aleatorio]);
             });
         }
 
